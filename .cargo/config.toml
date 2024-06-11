@@ -1,0 +1,16 @@
+[target.'cfg(target_arch = "riscv32")']
+runner    = "espflash flash --monitor"
+rustflags = [
+  "-C", "link-arg=-Tlinkall.x",
+  "-C", "force-frame-pointers",
+]
+
+[build]
+# esp32c3
+target = "riscv32imc-unknown-none-elf"
+
+[env]
+ESP_LOGLEVEL="INFO"
+
+[unstable]
+build-std = ["alloc", "core"]
